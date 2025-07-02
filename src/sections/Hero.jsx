@@ -43,19 +43,19 @@ const Hero = () => {
             <shadowMaterial opacity={0.3} />
           </mesh>
           <Suspense fallback={<Loader />}>
-            {/* <Float>
+             <Float>
               <Ranger
                 scale={isMobile ? 0.13 : 0.7}
-                position={isMobile ? [0, -0.8, -1.5] : [4.2, 2.1, -7]}
+                position={isMobile ? [2, -0.5, -1.5] : [4.2, 2.1, -7]}
                 rotation={[0.4, 0.2, 0]}
                 castShadow
                 receiveShadow
               />
-            </Float> */}
+            </Float> 
             <Float>
               <Astronaut
-                scale={isMobile ? 0.3 : 1.2}
-                position={isMobile ? [1.2, -0.8, 0] : [2, -1.1, 0.2]}
+                scale={isMobile ? 0.6 : 1.2}
+                position={isMobile ? [0.7, -0.8, 0] : [2, -1.1, 0.2]}
                 rotation={[0, 0, 0]}
                 playAnimation
                 castShadow
@@ -65,7 +65,7 @@ const Hero = () => {
             
               <Blackhole
                 scale={isMobile ? 0.2 : 0.6}
-                position={isMobile ? [-1.2, -0.8, 0] : [-2, 1.2, 0]}
+                position={isMobile ? [0.2, 1.1, -1] : [-2, 1.2, 0]}
                 rotation={[0.2, 5, 0]}
                 castShadow
                 receiveShadow
