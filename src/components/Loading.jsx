@@ -14,7 +14,7 @@ const Loading = () => {
       />
       <div className="relative z-10 flex flex-col items-center justify-center">
         <div className="loader mb-6"></div>
-        <span className="text-3xl font-bold text-white drop-shadow-lg animate-pulse">Loading...</span>
+        <span className="text-3xl font-bold text-white drop-shadow-lg animate-pulse">Preparing for liftoff...</span>
       </div>
       <style>{`
         .loader {

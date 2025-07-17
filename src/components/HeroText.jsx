@@ -1,100 +1,38 @@
-import { FlipWords } from "./FlipWords";
 import { motion } from "motion/react";
 
 const HeroText = () => {
-  const words = ["Secure", "Modern", "Scalable"];
-  const variants = {
-    hidden: { opacity: 0, x: -50 },
-    visible: { opacity: 1, x: 0 },
-  };
   return (
-    <div className="z-10 mt-20 text-center md:mt-40 md:text-left rounded-3xl bg-clip-text">
-      {/* Desktop View */}
-      <div className="flex-col hidden md:flex c-space">
-        <motion.h1
-          className="text-4xl font-medium"
-          variants={variants}
-          initial="hidden"
-          animate="visible"
-          transition={{ delay: 1 }}
-        >
-          Hi I'm Shalon
-        </motion.h1>
-        <div className="flex flex-col items-start">
-          <motion.p
-            className="text-5xl font-medium text-neutral-300"
-            variants={variants}
-            initial="hidden"
-            animate="visible"
-            transition={{ delay: 1.2 }}
-          >
-            A Software Engineer <br /> Dedicated to Crafting
-          </motion.p>
-          <motion.div
-            variants={variants}
-            initial="hidden"
-            animate="visible"
-            transition={{ delay: 1.5 }}
-          >
-            <FlipWords
-              words={words}
-              className="font-black text-white text-8xl"
-            />
-          </motion.div>
-          <motion.p
-            className="text-4xl font-medium text-neutral-300"
-            variants={variants}
-            initial="hidden"
-            animate="visible"
-            transition={{ delay: 1.8 }}
-          >
-            Web Solutions
-          </motion.p>
-        </div>
-      </div>
-      {/* Mobile View */}
-      <div className="flex- flex-col space-y-6 md:hidden">
-        <motion.p
-          className="text-4xl font-medium"
-          variants={variants}
-          initial="hidden"
-          animate="visible"
-          transition={{ delay: 1 }}
-        >
-          Hi,I'm Shalon
-        </motion.p>
-        <div>
-          <motion.p
-            className="text-5xl font-black text-neutral-300"
-            variants={variants}
-            initial="hidden"
-            animate="visible"
-            transition={{ delay: 1.2 }}
-          >
-            Building
-          </motion.p>
-          <motion.div
-            variants={variants}
-            initial="hidden"
-            animate="visible"
-            transition={{ delay: 1.5 }}
-          >
-            <FlipWords
-              words={words}
-              className="font-bold text-white text-7xl"
-            />
-          </motion.div>
-          <motion.p
-            className="text-4xl font-black text-neutral300"
-            variants={variants}
-            initial="hidden"
-            animate="visible"
-            transition={{ delay: 1.8 }}
-          >
-            Web Applications
-          </motion.p>
-        </div>
-      </div>
+    <div className="z-10 mt-20 md:mt-80 flex flex-col w-full">
+      {/* Subtitle */}
+      <motion.p
+        className="text-xs md:text-sm tracking-widest uppercase text-neutral-500 mb-2 md:mb-4 ml-1 md:ml-4"
+        initial={{ opacity: 0, x: -30 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.7 }}
+      >
+        Mission Control: All Clear
+      </motion.p>
+      {/* Name */}
+      <motion.h1
+        className="text-5xl md:text-8xl font-extrabold leading-none tracking-tight text-left text-black dark:text-white mb-2 md:mb-4 ml-1 md:ml-4"
+        style={{ fontFamily: 'Funnel Display, sans-serif', letterSpacing: '-0.04em' }}
+        initial={{ opacity: 0, x: -50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 1 }}
+      >
+        SHALON<br className="hidden md:block" /> FERNANDO
+      </motion.h1>
+      {/* Horizontal line */}
+      <div className="w-full border-t border-neutral-300 dark:border-neutral-700 mb-4 md:mb-8 ml-1 md:ml-4" />
+      {/* Description */}
+      <motion.p
+        className="text-xs md:text-base uppercase text-neutral-700 dark:text-neutral-300 text-right max-w-xl self-end mr-2 md:mr-8"
+        initial={{ opacity: 0, x: 30 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 1.3 }}
+      >
+        Engineering smart, impactful digital solutions that fuel business growth and user engagement.
+      </motion.p>
     </div>
   );
 };

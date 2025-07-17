@@ -6,7 +6,8 @@ function Navigation() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["home", "about", "work", "contact"];
+      // Add 'education' to the sections array
+      const sections = ["home", "about", "education", "work", "contact"];
       const scrollPosition = window.scrollY + 100; // Offset for better detection
 
       for (const section of sections) {
@@ -58,7 +59,6 @@ function Navigation() {
           About
         </a>
       </li>
-
       <li className="nav-li">
         <a
           className={`nav-link ${activeSection === "education" ? "text-white" : ""}`}
@@ -71,7 +71,6 @@ function Navigation() {
           Education
         </a>
       </li>
-      
       <li className="nav-li">
         <a
           className={`nav-link ${activeSection === "work" ? "text-white" : ""}`}
@@ -84,7 +83,6 @@ function Navigation() {
           Work
         </a>
       </li>
-      
       <li className="nav-li">
         <a
           className={`nav-link ${activeSection === "contact" ? "text-white" : ""}`}
