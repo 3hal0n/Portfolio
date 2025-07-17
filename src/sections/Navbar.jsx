@@ -58,18 +58,7 @@ function Navigation() {
           About
         </a>
       </li>
-      <li className="nav-li">
-        <a
-          className={`nav-link ${activeSection === "work" ? "text-white" : ""}`}
-          href="#work"
-          onClick={(e) => {
-            e.preventDefault();
-            scrollToSection("work");
-          }}
-        >
-          Work
-        </a>
-      </li>
+
       <li className="nav-li">
         <a
           className={`nav-link ${activeSection === "education" ? "text-white" : ""}`}
@@ -82,6 +71,20 @@ function Navigation() {
           Education
         </a>
       </li>
+      
+      <li className="nav-li">
+        <a
+          className={`nav-link ${activeSection === "work" ? "text-white" : ""}`}
+          href="#work"
+          onClick={(e) => {
+            e.preventDefault();
+            scrollToSection("work");
+          }}
+        >
+          Work
+        </a>
+      </li>
+      
       <li className="nav-li">
         <a
           className={`nav-link ${activeSection === "contact" ? "text-white" : ""}`}
