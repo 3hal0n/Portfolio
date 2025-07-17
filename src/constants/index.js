@@ -135,11 +135,6 @@ export const myProjects = [
 
 export const mySocials = [
   {
-    name: "WhatsApp",
-    href: "",
-    icon: "/assets/socials/whatsApp.svg",
-  },
-  {
     name: "Linkedin",
     href: "https://www.linkedin.com/in/shalon-fernando-229826315?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     icon: "/assets/socials/linkedIn.svg",
@@ -313,4 +308,23 @@ export const myEducation = [
     image: 'Web_Design_for_Beginners_E-Certificate.pdf', // placeholder
     skills: ['Web Development', 'Web Design'],
   },
+];
+
+export const educationExperiences = [
+  {
+    institution: "Maris Stella College Negombo",
+    degree: "Advanced Level",
+    duration: "2022",
+    description: "Completed Advanced Level studies preparing for higher education in Information Technology.",
+    icon: "/assets/maris-stella-logo.png", 
+    animation: "Learning" 
+  },
+  {
+    institution: "SLIIT",
+    degree: "BSc (Hons) in Information Technology Specialising in Software Engineering",
+    duration: "Jan 2023 - May 2027",
+    description: "Pursuing a Bachelor's degree in Information Technology with a specialization in Software Engineering, focusing on modern development practices and emerging technologies.",
+    icon: "/assets/sliit-logo.png", 
+    animation: "Studying" 
+  }
 ];

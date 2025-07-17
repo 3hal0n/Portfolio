@@ -1,91 +1,48 @@
-import { useState, useEffect } from 'react';
-import { myEducation } from '../constants';
+import { Suspense, useState } from 'react';
+import { Canvas } from '@react-three/fiber';
+import { OrbitControls } from '@react-three/drei';
+import Developer from '../components/Developer.jsx';
+import CanvasLoader from '../components/Loading.jsx';
+import { educationExperiences } from '../constants/index.js';
+import { Model as Earth } from '../components/Earth.jsx';
 import { Particles } from '../components/Particles';
+import { Timeline } from '../components/Timeline';
 
 const Education = () => {
-  const [current, setCurrent] = useState(0);
-  const total = myEducation.length;
-
-  // Auto-advance the slide every 5 seconds
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % total);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [total]);
-
-  const next = () => setCurrent((prev) => (prev + 1) % total);
-  const prev = () => setCurrent((prev) => (prev - 1 + total) % total);
-
-  const edu = myEducation[current];
-
   return (
-    <section className="relative w-full py-16 flex flex-col items-center overflow-hidden">
-      <Particles
-        className="absolute inset-0 -z-50"
-        quantity={100}
-        ease={80}
-        color={"#ffffff"}
-        refresh
-      />
-      <h2 className="text-3xl md:text-4xl font-bold mb-8 text-white tracking-tight z-10">Education & Certifications</h2>
-      <div className="relative w-full max-w-2xl flex flex-col items-center bg-primary/80 rounded-2xl shadow-lg p-8 z-10">
-        <div className="flex flex-col md:flex-row items-center gap-6 w-full">
-          {/* Logo */}
-          <div className="flex-shrink-0 flex flex-col items-center w-24 h-24 bg-white/10 rounded-full justify-center">
-            <img src={edu.logo} alt={edu.issuer} className="w-16 h-16 object-contain" />
-          </div>
-          {/* Details */}
-          <div className="flex-1 flex flex-col gap-2">
-            <h3 className="text-xl font-semibold text-lavender">{edu.name}</h3>
-            <div className="text-neutral-300 text-sm flex flex-wrap gap-2 items-center">
-              <span>{edu.issuer}</span>
-              <span className="mx-1">•</span>
-              <span>Issued {edu.issueDate}</span>
-            </div>
-            <div className="text-neutral-400 text-xs">Credential ID: {edu.credentialId}</div>
-            {edu.skills && edu.skills.length > 0 && (
-              <div className="flex flex-wrap gap-2 mt-2">
-                {edu.skills.map((skill, i) => (
-                  <span key={i} className="bg-navy/60 text-xs text-white px-2 py-1 rounded-full">{skill}</span>
-                ))}
-              </div>
-            )}
-            <div className="mt-3">
-              <a
-                href={edu.credentialUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block px-4 py-2 bg-lavender text-navy font-medium rounded-lg shadow hover:bg-royal transition"
-              >
-                Show credential
-              </a>
-            </div>
-          </div>
+    <section className="relative w-full min-h-screen flex items-center justify-center bg-primary overflow-hidden" id="education">
+      <Particles className="absolute inset-0 -z-50" quantity={100} ease={80} color="#ffffff" refresh />
+      <div className="w-full max-w-6xl mx-auto flex flex-row items-center gap-8 z-10 p-8">
+        {/* Earth model on the left - removed container constraints */}
+        <div className="flex-1 relative h-screen flex items-center justify-center">
+          <Canvas 
+            camera={{ position: [0, 0, 6], fov: 50 }} 
+            style={{ 
+              width: '100%', 
+              height: '100%',
+              minHeight: '600px',
+              background: 'transparent' // Ensure no blue overlay
+            }} 
+            shadows
+            gl={{ antialias: true, alpha: true }}
+          >
+            {/* Improved lighting for clarity */}
+            <ambientLight intensity={1.2} />
+            <directionalLight position={[5, 10, 7]} intensity={2.5} color={'#fff'} castShadow />
+            <directionalLight position={[-5, -10, -7]} intensity={1.5} color={'#fff'} />
+            <Suspense fallback={<CanvasLoader />}>
+              <Earth scale={2.5} position={[0, 0, 0]} />
+              {/* Removed OrbitControls to prevent resizing/zooming */}
+            </Suspense>
+          </Canvas>
         </div>
-        {/* Carousel Controls */}
-        <div className="flex justify-between items-center w-full mt-8">
-          <button
-            onClick={prev}
-            className="p-2 rounded-full bg-navy text-white hover:bg-lavender transition"
-            aria-label="Previous"
-          >
-            &#8592;
-          </button>
-          <div className="text-neutral-400 text-sm">
-            {current + 1} / {total}
-          </div>
-          <button
-            onClick={next}
-            className="p-2 rounded-full bg-navy text-white hover:bg-lavender transition"
-            aria-label="Next"
-          >
-            &#8594;
-          </button>
+        {/* Timeline on the right */}
+        <div className="flex-1">
+          <Timeline data={educationExperiences} />
         </div>
       </div>
     </section>
   );
 };
 
-export default Education; 
+export default Education;
