@@ -25,55 +25,35 @@ const About = () => {
           </div>
           <div className="absolute inset-x-0 pointer-evets-none -bottom-4 h-1/2 sm:h-1/3 bg-gradient-to-t from-indigo" />
         </div>
-        {/* Grid 2 */}
-        <div className="grid-default-color grid-2">
-          <div
-            ref={grid2Container}
-            className="flex items-center justify-center w-full h-full"
-          >
-            <p className="flex items-end text-5xl text-gray-500">
-              CODE IS CRAFT
-            </p>
-            <Card
-              style={{ rotate: "75deg", top: "30%", left: "20%" }}
-              text="GRASP"
-              containerRef={grid2Container}
+        {/* Grid 2 - Resume & Summary */}
+        <div className="grid-default-color grid-2 flex flex-col items-center justify-center gap-4 py-6 px-4">
+          <div className="flex flex-col md:flex-row items-center w-full max-w-2xl mx-auto gap-4 md:gap-10">
+            <img 
+              src="assets/grid3.png" 
+              alt="grid-3" 
+              className="w-24 h-24 sm:w-32 sm:h-32 rounded-full object-contain mb-4 md:mb-0 shadow-lg border border-indigo-900 bg-indigo-950/30 transition-transform duration-200 hover:scale-105 hover:shadow-2xl mx-auto md:mx-0" 
             />
-            <Card
-              style={{ rotate: "-30deg", top: "60%", left: "45%" }}
-              text="SOLID"
-              containerRef={grid2Container}
-            />
-            <Card
-              style={{ rotate: "90deg", bottom: "30%", left: "70%" }}
-              text="Design Patterns"
-              containerRef={grid2Container}
-            />
-            <Card
-              style={{ rotate: "-45deg", top: "55%", left: "0%" }}
-              text="Design Principles"
-              containerRef={grid2Container}
-            />
-            <Card
-              style={{ rotate: "20deg", top: "10%", left: "38%" }}
-              text="SRP"
-              containerRef={grid2Container}
-            />
-            <Card
-              style={{ rotate: "30deg", top: "70%", left: "70%" }}
-              image="assets/logos/csharp-pink.png"
-              containerRef={grid2Container}
-            />
-            <Card
-              style={{ rotate: "-45deg", top: "70%", left: "25%" }}
-              image="assets/logos/dotnet-pink.png"
-              containerRef={grid2Container}
-            />
-            <Card
-              style={{ rotate: "-45deg", top: "5%", left: "10%" }}
-              image="assets/logos/blazor-pink.png"
-              containerRef={grid2Container}
-            />
+            <div className="flex flex-col items-center md:items-start w-full text-center md:text-left">
+              <button
+                className="w-40 sm:w-56 mb-6 mt-4 flex items-center justify-center gap-2 px-4 sm:px-6 py-2 sm:py-3 rounded-full font-semibold text-white text-xs sm:text-base bg-gradient-to-r from-[#3A3A3A] via-[#242424] to-[#3A3A3A] shadow-lg border-2 border-neutral-800/80 opacity-90 cursor-not-allowed transition-all duration-200
+                hover:scale-105 hover:shadow-2xl hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-indigo-400/60 active:scale-95"
+                disabled
+              >
+                <span className="inline-block w-5 h-5 align-middle">
+                  <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-full h-full">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v12m0 0l-4-4m4 4l4-4m-9 8h10" />
+                  </svg>
+                </span>
+                Download Resume(Coming Soon)
+              </button>
+              {/* Divider */}
+              <div className="w-24 h-[2px] bg-gradient-to-r from-indigo-400 via-indigo-700 to-storm my-4 opacity-60 rounded-full mx-auto md:mx-0" />
+              <p className="headtext mt-2 mb-4 text-lg sm:text-xl">Driven by Curiosity, Growth, and Impact</p>
+              <p className="subtext max-w-xs sm:max-w-md mb-4 mx-auto text-sm sm:text-base leading-relaxed">
+                I love solving problems and building things through code. Programming isn&apos;t just my
+                profession—it&apos;s my passion. I enjoy exploring new technologies and enhancing my skills.
+              </p>
+            </div>
           </div>
         </div>
         {/* Grid 3 */}

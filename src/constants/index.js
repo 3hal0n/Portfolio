@@ -112,23 +112,14 @@ export const myProjects = [
       {
         id: 1,
         name: "Kotlin",
-        path: "/assets/logos/javascript.svg",
+        path: "/assets/logos/kotlin.svg",
       },
       {
         id: 2,
-        name: "Android",
-        path: "/assets/logos/microsoft.svg",
+        name: "java",
+        path: "/assets/logos/java.svg",
       },
-      {
-        id: 3,
-        name: "Material Design",
-        path: "/assets/logos/css3.svg",
-      },
-      {
-        id: 4,
-        name: "SQLite",
-        path: "/assets/logos/sqlite.svg",
-      },
+      
     ],
   },
 ];
@@ -144,6 +135,12 @@ export const mySocials = [
     href: "https://www.instagram.com/3halon?igsh=MWdtNXQyb2kwaDl2NA==",
     icon: "/assets/socials/instagram.svg",
   },
+  {
+    name: "Github",
+    href: "https://github.com/3hal0n",
+    icon: "/assets/socials/github.svg",
+  },
+  
 ];
 
 export const experiences = [
