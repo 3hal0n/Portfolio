@@ -5,7 +5,7 @@ import { useFrame } from '@react-three/fiber'
 
 export function Blackhole(props) {
   const group = useRef()
-  const { nodes, materials, animations } = useGLTF('models/blackhole.glb')
+  const { nodes, materials, animations } = useGLTF('models/blackhole_draco.glb')
   const { actions } = useAnimations(animations, group)
   // Play the first animation if playAnimation prop is true
     useEffect(() => {
@@ -184,4 +184,4 @@ export function Blackhole(props) {
   )
 }
 
-useGLTF.preload('models/blackhole.glb')
+useGLTF.preload('models/blackhole_draco.glb')

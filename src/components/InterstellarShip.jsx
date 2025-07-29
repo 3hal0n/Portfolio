@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 
 export function InterstellarShip(props) {
-  const { nodes, materials } = useGLTF('/models/interstellar__endurance_high_fidelity.glb')
+  const { nodes, materials } = useGLTF('/models/interstellar_endurance_high_fidelity_draco.glb')
   return (
     <group {...props} dispose={null}>
       <group scale={0.09}>
@@ -1948,4 +1948,4 @@ export function InterstellarShip(props) {
   )
 }
 
-useGLTF.preload('/models/interstellar__endurance_high_fidelity.glb')
+useGLTF.preload('/models/interstellar_endurance_high_fidelity_draco.glb')

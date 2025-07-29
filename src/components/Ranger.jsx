@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 
 export function Ranger(props) {
-  const { nodes, materials } = useGLTF('models/interstellar_ranger_one (1).glb')
+  const { nodes, materials } = useGLTF('models/interstellar_ranger_one_draco.glb')
   return (
     <group {...props} dispose={null}>
       <group rotation={[-Math.PI / 2, 0, 0]}>
@@ -53,4 +53,4 @@ export function Ranger(props) {
   )
 }
 
-useGLTF.preload('models/interstellar_ranger_one (1).glb')
+useGLTF.preload('models/interstellar_ranger_one_draco.glb')

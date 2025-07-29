@@ -5,7 +5,7 @@ import * as THREE from 'three'
 
 export function Model(props) {
   const group = useRef()
-  const { nodes, materials, animations } = useGLTF('/models/earth.glb')
+  const { nodes, materials, animations } = useGLTF('/models/earth_draco.glb')
   useAnimations(animations, group)
 
   useEffect(() => {
@@ -46,4 +46,4 @@ export function Model(props) {
   )
 }
 
-useGLTF.preload('/models/earth.glb')
+useGLTF.preload('/models/earth_draco.glb')
