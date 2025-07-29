@@ -1,6 +1,63 @@
 export const myProjects = [
   {
-    id: 1,
+  id: 1,
+  title: "🎮Avyra Game Download Platform",
+  description:
+    "Avyra is a fullstack game download web application inspired by platforms like Steam. Built with React and Spring Boot, Avyra offers a complete gaming storefront experience — from browsing games to secure downloads after purchase. With a modern glassmorphic UI, 3D animations, AI assistant, and PayPal integration, it delivers a seamless and engaging experience for gamers.",
+  subDescription: [
+    "🔐 User Authentication: JWT-based secure registration, login, and password management.",
+    "🛍️ Wishlist & Cart: Add games to wishlist or cart with full management functionality.",
+    "💳 PayPal Payments: Checkout securely with PayPal integration and sandbox testing.",
+    "📥 Game Downloads: Download purchased games securely through backend validation.",
+    "🗣️ AI Chatbot Assistant: Gemini-powered chatbot for support and game recommendations.",
+    "⭐ Game Reviews: Submit, read, and delete reviews directly on game detail pages.",
+    "📁 User Dashboard: Tabbed profile with account details, password change, and order history.",
+    "🎨 Glassmorphic UI: Neon/glass-like interface with Tailwind CSS and custom animations.",
+    "🧠 3D Login/Register: Animated 3D character models powered by React Three Fiber and Drei.",
+  ],
+  href: "https://github.com/3hal0n/Avyra",
+  logo: "",
+  image: "/assets/projects/Avyra.png",
+  tags: [
+    {
+      id: 1,
+      name: "React",
+      path: "/assets/logos/react.svg",
+    },
+    {
+      id: 2,
+      name: "Spring Boot",
+      path: "/assets/logos/springboot.svg",
+    },
+    {
+      id: 3,
+      name: "TailwindCSS",
+      path: "/assets/logos/tailwindcss.svg",
+    },
+    {
+      id: 4,
+      name: "MySQL",
+      path: "/assets/logos/mysql.svg",
+    },
+    {
+      id: 5,
+      name: "Three.js",
+      path: "/assets/logos/threejs.svg",
+    },
+    {
+      id: 6,
+      name: "JWT",
+      path: "/assets/logos/jwt.svg",
+    },
+    {
+      id: 7,
+      name: "PayPal",
+      path: "/assets/logos/paypal.svg",
+    },
+  ],
+},
+  {
+    id: 2,
     title: "🏥 Arogya Patient Management System",
     description:
       "Arogya is a modern, web-based Patient Management System designed to streamline healthcare workflows for clinics, hospitals, and independent medical practitioners. With a strong focus on usability, automation, and visual engagement, Arogya simplifies managing patient records, appointments, and notifications — empowering healthcare providers to deliver efficient, timely care.",
@@ -47,7 +104,7 @@ export const myProjects = [
     ],
   },
   {
-    id: 2,
+    id: 3,
     title: "🧰 Item Inventory & Maintenance Management System",
     description:
       "A full-stack web application for efficient inventory tracking, usage logging, and maintenance management. Built for modern organizations, it streamlines asset handling with real-time alerts, interactive 3D models, and exportable reports — all within a secure, role-based environment.",
@@ -93,10 +150,56 @@ export const myProjects = [
         path: "/assets/logos/threejs.svg",
       },
     ],
-  },
+  },{
+  id: 4,
+  title: "📄 PDF Chat AI",
+  description:
+    "PDF Chat AI is an intelligent document assistant that allows users to upload and interact with PDF files using natural language. Built with Streamlit and Hugging Face models, it leverages retrieval-augmented generation (RAG) to enable fast, context-aware question answering over document content.",
+  subDescription: [
+    "📤 Multi-PDF Upload: Drag and drop multiple PDF files for combined semantic analysis.",
+    "🔍 Semantic Search: Uses FAISS for fast vector similarity search over document chunks.",
+    "🤖 Answer Generation: Integrates Hugging Face's instructor-xl for embedding and google/flan-t5-large for answering.",
+    "💬 Conversational Memory: Maintains context of previous questions for more coherent interaction.",
+    "📊 Streamlit Interface: Clean and minimal UI optimized for user-friendly PDF interactions.",
+    "⚙️ CPU Optimized: Designed for smooth performance without requiring GPU hardware.",
+    "📚 Retrieval-Augmented Generation: Implements RAG pipeline for context-aware responses.",
+    "🧠 NLP Pipeline: Query embedding → FAISS chunk retrieval → LLM response generation.",
+  ],
+  href: "https://github.com/3hal0n/pdfChat-ai",
+  logo: "",
+  image: "/assets/projects/pdfchat.png",
+  tags: [
+    {
+      id: 1,
+      name: "Python",
+      path: "/assets/logos/python.svg",
+    },
+    {
+      id: 2,
+      name: "Streamlit",
+      path: "/assets/logos/streamlit.svg",
+    },
+    {
+      id: 3,
+      name: "Hugging Face",
+      path: "/assets/logos/huggingface.svg",
+    },
+    {
+      id: 4,
+      name: "FAISS",
+      path: "/assets/logos/faiss.svg",
+    },
+    {
+      id: 5,
+      name: "NLP",
+      path: "/assets/logos/nlp.svg",
+    },
+  ],
+},
+
   {
-    id: 3,
-    title: "Cashly - Personal Finance Management App 📊💰",
+    id: 5,
+    title: "💰Cashly - Personal Finance Management App ",
     description:
       "Cashly is a modern, user-friendly Android application designed to help users manage their personal finances effectively. Built with Kotlin and following Material Design principles, Cashly provides an intuitive interface for tracking expenses, managing budgets, and analyzing spending patterns.",
     subDescription: [

@@ -2,11 +2,12 @@ import { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import Developer from '../components/Developer.jsx';
-import CanvasLoader from '../components/Loading.jsx';
 import { educationExperiences } from '../constants/index.js';
 import { Model as Earth } from '../components/Earth.jsx';
 import { Particles } from '../components/Particles';
 import { Timeline } from '../components/Timeline';
+
+
 
 const Education = () => {
   return (
@@ -30,9 +31,9 @@ const Education = () => {
             <ambientLight intensity={1.2} />
             <directionalLight position={[5, 10, 7]} intensity={2.5} color={'#fff'} castShadow />
             <directionalLight position={[-5, -10, -7]} intensity={1.5} color={'#fff'} />
-            <Suspense fallback={<CanvasLoader />}>
+            
               <Earth scale={2.5} position={[0, 0, 0]} />
-            </Suspense>
+            
           </Canvas>
         </div>
         {/* Timeline below for mobile, right for desktop */}
