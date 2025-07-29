@@ -40,7 +40,7 @@ const About = () => {
     />
     <div className="flex flex-col items-center md:items-start w-full text-center md:text-left space-y-4">
       <a
-        href="/assets/resume.pdf"
+        href="/assets/Shalon_Fernando_Resume.pdf"
         download="Shalon_Fernando_Resume.pdf"
         className="inline-flex items-center justify-center gap-3 px-6 py-3 rounded-full font-semibold text-white text-base bg-gradient-to-r from-indigo-600 via-indigo-500 to-indigo-600 shadow-lg border border-indigo-700 hover:brightness-110 focus:outline-none focus:ring-4 focus:ring-indigo-400/60 active:scale-95 transition-transform duration-150 cursor-pointer"
         aria-label="Download Shalon Fernando's Resume"
