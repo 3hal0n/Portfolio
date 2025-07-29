@@ -13,9 +13,9 @@ const Education = () => {
   return (
     <section className="relative w-full min-h-screen flex items-center justify-center bg-primary overflow-hidden" id="education">
       <Particles className="absolute inset-0 -z-50" quantity={100} ease={80} color="#ffffff" refresh />
-      <div className="w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-4 md:gap-8 z-10 p-2 md:p-8">
+      <div className="relative w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-4 md:gap-8 z-10 p-2 md:p-8">
         {/* Earth model on top for mobile, left for desktop */}
-        <div className="w-full md:w-1/2 flex justify-center items-center h-64 md:h-screen mb-4 md:mb-0">
+        <div className="relative w-full md:w-1/2 flex justify-center items-center h-64 md:h-screen mb-4 md:mb-0">
           <Canvas 
             camera={{ position: [0, 0, 6], fov: 50 }} 
             style={{ 
