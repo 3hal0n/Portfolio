@@ -13,7 +13,7 @@
 Welcome to my interactive developer portfolio!  
 This project showcases my skills, projects, and experience as a full-stack software engineer. Built with React, Three.js, and TailwindCSS, it features 3D animations, responsive design, and a modern UI/UX.
 
-- **Live Demo:** [https://shalonfernando.vercel.app/.vercel.app](https://shalonfernando.vercel.app/)
+- **Live Demo:** [https://shalonfernando.vercel.app/.vercel.app](https://shalon.vercel.app/)
 - **Contact:** shalonfernando52@gmail.com
 
 ---
