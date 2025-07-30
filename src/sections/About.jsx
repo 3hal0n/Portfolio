@@ -31,18 +31,26 @@ const About = () => {
         </div>
         
         {/* Grid 2 - Resume & Summary */}
-<div className="grid-default-color grid-2 flex flex-col items-center justify-center gap-6 py-8 px-6 md:px-12 rounded-lg shadow-lg bg-gradient-to-br from-indigo-900 to-indigo-800">
-  <div className="flex flex-col md:flex-row items-center w-full max-w-3xl mx-auto gap-8 md:gap-12">
+
+      {/* Grid 2 - Resume & Summary */}
+<div className="grid-default-color grid-2 flex flex-col items-center justify-center gap-4 sm:gap-6 py-6 sm:py-8 px-4 sm:px-6 md:px-12 rounded-lg shadow-lg bg-gradient-to-br from-indigo-900 to-indigo-800">
+  <div className="flex flex-col items-center w-full max-w-2xl mx-auto gap-4 sm:gap-6 md:gap-8">
+    
+    {/* Profile Image */}
     <img
       src="assets/grid3.png"
       alt="Profile avatar"
-      className="w-28 h-28 sm:w-36 sm:h-36 rounded-full object-cover shadow-xl border-4 border-indigo-700 bg-indigo-900 transition-transform duration-300 hover:scale-110"
+      className="w-20 h-20 xs:w-24 xs:h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full object-cover shadow-xl border-3 sm:border-4 border-indigo-700 bg-indigo-900 transition-transform duration-300 hover:scale-110 flex-shrink-0"
     />
-    <div className="flex flex-col items-center md:items-start w-full text-center md:text-left space-y-4">
+    
+    {/* Content Container */}
+    <div className="flex flex-col items-center w-full text-center space-y-3 sm:space-y-4">
+      
+      {/* Download Resume Button */}
       <a
-        href="/assets/Shalon_Fernando_Resume.pdf"
-        download="Shalon_Fernando_Resume.pdf"
-        className="inline-flex items-center justify-center gap-3 px-6 py-3 rounded-full font-semibold text-white text-base bg-gradient-to-r from-indigo-600 via-indigo-500 to-indigo-600 shadow-lg border border-indigo-700 hover:brightness-110 focus:outline-none focus:ring-4 focus:ring-indigo-400/60 active:scale-95 transition-transform duration-150 cursor-pointer"
+        href="/assets/ShalonFernando_Resume.pdf"
+        download="ShalonFernando_Resume.pdf"
+        className="inline-flex items-center justify-center gap-2 sm:gap-3 px-4 sm:px-6 py-2.5 sm:py-3 rounded-full font-semibold text-white text-sm sm:text-base bg-gradient-to-r from-indigo-600 via-indigo-500 to-indigo-600 shadow-lg border border-indigo-700 hover:brightness-110 focus:outline-none focus:ring-4 focus:ring-indigo-400/60 active:scale-95 transition-all duration-150 cursor-pointer w-full max-w-[200px] sm:max-w-none sm:w-auto"
         aria-label="Download Shalon Fernando's Resume"
       >
         <svg
@@ -50,7 +58,7 @@ const About = () => {
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
-          className="w-6 h-6"
+          className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0"
           aria-hidden="true"
         >
           <path
@@ -60,14 +68,16 @@ const About = () => {
             d="M12 4v12m0 0l-4-4m4 4l4-4m-9 8h10"
           />
         </svg>
-        Download Resume
+        <span className="whitespace-nowrap">Download Resume</span>
       </a>
 
-      <h3 className="text-xl font-semibold text-white">
+      {/* Heading */}
+      <h3 className="text-lg sm:text-xl font-semibold text-white leading-tight px-2">
         Driven by Curiosity, Growth, and Impact
       </h3>
 
-      <p className="text-indigo-200 max-w-md text-sm sm:text-base leading-relaxed">
+      {/* Description */}
+      <p className="text-indigo-200 text-xs sm:text-sm md:text-base leading-relaxed max-w-xs sm:max-w-sm md:max-w-md px-2">
         I love solving problems and building things through code.
         Programming isn&apos;t just my profession — it&apos;s my passion.
         I enjoy exploring new technologies and enhancing my skills.
@@ -75,6 +85,7 @@ const About = () => {
     </div>
   </div>
 </div>
+
 
         {/* Grid 3 */}
         <div className="grid-black-color grid-3">
