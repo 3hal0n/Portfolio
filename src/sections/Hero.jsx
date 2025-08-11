@@ -11,6 +11,7 @@ import { useGLTF, useAnimations } from "@react-three/drei";
 import { Blackhole } from "../components/Blackhole";
 import { Ranger } from "../components/Ranger";
 
+
 const Hero = () => {
   const isMobile = useMediaQuery({ maxWidth: 853 });
   return (
