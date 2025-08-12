@@ -1,19 +1,14 @@
-import { Canvas, useFrame } from "@react-three/fiber";
-import HeroText from "../components/HeroText";
-import { Particles } from "../components/Particles";
-import { Float } from "@react-three/drei";
+import { Canvas } from "@react-three/fiber";
+import { Planet } from "../components/Planet";
+import { Environment, Float, Lightformer } from "@react-three/drei";
 import { useMediaQuery } from "react-responsive";
-import { easing } from "maath";
-import { Suspense } from "react";
-import Loader from "../components/Loader";
-
-import { useGLTF, useAnimations } from "@react-three/drei";
-import { Blackhole } from "../components/Blackhole";
-import { Ranger } from "../components/Ranger";
-
+import { Particles } from "../components/Particles";
+import HeroText from "../components/HeroText";
+import ShootingStarShower from "../components/ShootingStarShower";
 
 const Hero = () => {
   const isMobile = useMediaQuery({ maxWidth: 853 });
+
   return (
     <section id="home" className="flex items-start justify-center min-h-screen overflow-hidden md:items-start md:justify-start c-space">
       <Particles
@@ -28,68 +23,55 @@ const Hero = () => {
         className="absolute inset-0"
         style={{ width: "100vw", height: "100vh" }}
       >
-        <Canvas camera={{ position: [-2, -1, 8] }} shadows>
+        <Canvas
+          shadows
+          camera={{ position: [0, 0, -10], fov: 17.5, near: 1, far: 20 }}
+        >
           <ambientLight intensity={0.5} />
-          <directionalLight
-            position={[5, 10, 7]}
-            intensity={1.5}
-            castShadow
-            shadow-mapSize-width={2048}
-            shadow-mapSize-height={2048}
-            shadow-bias={-0.0001}
+          
+          <Float speed={0.5}>
+            <Planet scale={isMobile ? 0.7 : 1} />
+          </Float>
+          
+          {/* Shooting Star Shower */}
+          <ShootingStarShower 
+            starCount={isMobile ? 6 : 10}
+            showerInterval={4000}
+            continuous={true}
           />
-          <pointLight position={[-5, 5, 5]} intensity={0.5} castShadow />
-          <mesh receiveShadow rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.1, 0]}>
-            <planeGeometry args={[20, 20]} />
-            <shadowMaterial opacity={0.3} />
-          </mesh>
-          <Suspense fallback={<Loader />}>
-             <Float>
-              <Ranger
-                scale={isMobile ? 0.13 : 0.7}
-                position={isMobile ? [2, -0.5, -1.5] : [4.2, 2.1, -7]}
-                rotation={[0.4, 0.2, 0]}
-                castShadow
-                receiveShadow
+          
+          <Environment resolution={256}>
+            <group rotation={[-Math.PI / 3, 4, 1]}>
+              <Lightformer
+                form={"circle"}
+                intensity={2}
+                position={[0, 5, -9]}
+                scale={10}
               />
-            </Float> 
-            {/* <Float>
-              <Astronaut
-                scale={isMobile ? 0.6 : 1.2}
-                position={isMobile ? [0.7, -0.8, 0] : [2, -1.1, 0.2]}
-                rotation={[0, 0, 0]}
-                playAnimation
-                castShadow
-                receiveShadow
+              <Lightformer
+                form={"circle"}
+                intensity={2}
+                position={[0, 3, 1]}
+                scale={10}
               />
-            </Float> */}
-            
-              <Blackhole
-                scale={isMobile ? 0.2 : 0.6}
-                position={isMobile ? [0.2, 1.1, -1] : [-2, 1.2, 0]}
-                rotation={[0.2, 5, 0]}
-                castShadow
-                receiveShadow
-                playAnimation
+              <Lightformer
+                form={"circle"}
+                intensity={2}
+                position={[-5, -1, -1]}
+                scale={10}
               />
-            
-            <Rig />
-          </Suspense>
+              <Lightformer
+                form={"circle"}
+                intensity={2}
+                position={[10, 1, 0]}
+                scale={16}
+              />
+            </group>
+          </Environment>
         </Canvas>
       </figure>
     </section>
   );
 };
-
-function Rig() {
-  return useFrame((state, delta) => {
-    easing.damp3(
-      state.camera.position,
-      [state.mouse.x / 10, 1 + state.mouse.y / 10, 3],
-      0.5,
-      delta
-    );
-  });
-}
 
 export default Hero;

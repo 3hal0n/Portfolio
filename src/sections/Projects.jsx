@@ -115,8 +115,7 @@ const Projects = () => {
         withScrollTrigger={true}
       />
       
-      {/* Space-themed divider */}
-      <div className="bg-gradient-to-r from-transparent via-neutral-700 to-transparent mt-12 h-[1px] w-full" />
+      
       
       <div
         className="relative flex flex-col font-light mt-8"
