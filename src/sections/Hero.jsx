@@ -6,7 +6,7 @@ import { useMediaQuery } from "react-responsive";
 import { easing } from "maath";
 import { Suspense } from "react";
 import Loader from "../components/Loader";
-import { Astronaut } from "../components/Astronaut";
+
 import { useGLTF, useAnimations } from "@react-three/drei";
 import { Blackhole } from "../components/Blackhole";
 import { Ranger } from "../components/Ranger";
@@ -53,7 +53,7 @@ const Hero = () => {
                 receiveShadow
               />
             </Float> 
-            <Float>
+            {/* <Float>
               <Astronaut
                 scale={isMobile ? 0.6 : 1.2}
                 position={isMobile ? [0.7, -0.8, 0] : [2, -1.1, 0.2]}
@@ -62,7 +62,7 @@ const Hero = () => {
                 castShadow
                 receiveShadow
               />
-            </Float>
+            </Float> */}
             
               <Blackhole
                 scale={isMobile ? 0.2 : 0.6}
