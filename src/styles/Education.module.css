@@ -1,0 +1,23 @@
+/* Education.module.css */
+.timelineItem {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease;
+}
+
+.timelineItem.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.spacemanContainer {
+  will-change: transform;
+}
+
+.educationSection {
+  will-change: transform;
+}
+
+.gradientRadial {
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+}
