@@ -4,7 +4,7 @@ import { Environment, Float, Lightformer } from "@react-three/drei";
 import { useMediaQuery } from "react-responsive";
 import { Particles } from "../components/Particles";
 import HeroText from "../components/HeroText";
-import ShootingStarShower from "../components/ShootingStarShower";
+
 
 const Hero = () => {
   const isMobile = useMediaQuery({ maxWidth: 853 });
@@ -33,13 +33,13 @@ const Hero = () => {
             <Planet scale={isMobile ? 0.7 : 1} />
           </Float>
           
-          {/* Shooting Star Shower */}
+          {/* Shooting Star Shower
           <ShootingStarShower 
             starCount={isMobile ? 6 : 10}
             showerInterval={4000}
             continuous={true}
           />
-          
+           */}
           <Environment resolution={256}>
             <group rotation={[-Math.PI / 3, 4, 1]}>
               <Lightformer

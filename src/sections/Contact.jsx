@@ -2,7 +2,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { Particles } from "../components/Particles";
 import AnimatedHeaderSection from "../components/AnimatedHeaderSection";
-import AnimatedInterstellarShip from "../components/AnimatedInterstellarShip";
+
 import Marquee from "../components/Marquee";
 import { Canvas } from "@react-three/fiber";
 import { mySocials } from "../constants";
@@ -93,7 +93,7 @@ const Contact = () => {
             </div>
           </div>
 
-          {/* 3D Model Section */}
+          {/* 3D Model Section
           <div className="contact-section flex items-center justify-center">
             <div className="w-full h-[400px] md:h-[500px] relative">
               <Canvas 
@@ -111,7 +111,7 @@ const Contact = () => {
                 />
               </Canvas>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
       
