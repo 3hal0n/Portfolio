@@ -1,7 +1,9 @@
 import React, { useEffect, useState, lazy, Suspense } from "react";
 import Navbar from "./sections/Navbar";
 import Hero from "./sections/Hero";
-import ReactLenis from "lenis/react";
+
+import { ReactLenis } from "@studio-freight/react-lenis"
+
 import { useProgress } from "@react-three/drei";
 
 // Lazy load components for better performance
