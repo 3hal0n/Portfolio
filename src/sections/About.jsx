@@ -14,6 +14,9 @@ const About = () => {
   const grid2Container = useRef();
 
   useGSAP(() => {
+    // Remove the .about-heading target since it no longer exists
+    // AnimatedHeaderSection handles its own animations
+
     // Animate grid items with staggered entrance
     gsap.from(".grid-item", {
       y: 80,
@@ -25,19 +28,6 @@ const About = () => {
       scrollTrigger: {
         trigger: "#about",
         start: "top 75%",
-        toggleActions: "play none none reverse"
-      },
-    });
-
-    // Animate section heading
-    gsap.from(".about-heading", {
-      y: -50,
-      opacity: 0,
-      duration: 1.2,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: "#about",
-        start: "top 85%",
         toggleActions: "play none none reverse"
       },
     });
@@ -68,16 +58,14 @@ const About = () => {
         <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-gradient-to-r from-cyan-500/6 to-blue-500/6 rounded-full blur-3xl"></div>
       </div>
 
-      {/* Header Section */}
-<AnimatedHeaderSection
-  subTitle={"Exploring the Universe of Code"}
-  title={"About Me"}
-  text={`My journey through the digital cosmos, crafting innovative solutions and pushing the boundaries of what's possible with code.`}
-  textColor={"text-white"}
-  withScrollTrigger={true}
-/>
-
-
+      {/* Header Section - Using AnimatedHeaderSection like Education */}
+      <AnimatedHeaderSection
+        subTitle={"Exploring the Universe of Code"}
+        title={"About Me"}
+        text={`My journey through the digital cosmos, crafting innovative solutions and pushing the boundaries of what's possible with code.`}
+        textColor={"text-white"}
+        withScrollTrigger={true}
+      />
 
       <div className="grid-container grid grid-cols-1 gap-6 md:grid-cols-6 md:auto-rows-[20rem] mt-12 px-4 md:px-10">
         
