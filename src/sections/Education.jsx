@@ -102,12 +102,12 @@ const Education = () => {
   return (
     <section
       id="education"
-      className="flex flex-col justify-between min-h-screen bg-primary overflow-hidden relative"
+      className="flex flex-col justify-between min-h-screen bg-primary overflow-hidden relative section-performance"
     >
       {/* Particles Background */}
       <Particles 
         className="absolute inset-0 -z-50" 
-        quantity={150} 
+        quantity={90} 
         ease={60} 
         color="#ffffff" 
         refresh 

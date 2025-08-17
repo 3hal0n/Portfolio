@@ -165,7 +165,7 @@ const Projects = () => {
   return (
     <section 
       id="work" 
-      className="relative w-full min-h-screen bg-primary overflow-hidden"
+      className="relative w-full min-h-screen bg-primary overflow-hidden section-performance"
     >
       {/* Space-themed Background Elements */}
       <div className="absolute inset-0 -z-50">

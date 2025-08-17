@@ -49,7 +49,7 @@ const About = () => {
   }, []);
 
   return (
-    <section className="relative w-full min-h-screen bg-primary overflow-hidden section-spacing" id="about">
+  <section className="relative w-full min-h-screen bg-primary overflow-hidden section-spacing section-performance" id="about">
       {/* Space-themed Background Elements */}
       <div className="absolute inset-0 -z-50">
         {/* Gradient Orbs */}

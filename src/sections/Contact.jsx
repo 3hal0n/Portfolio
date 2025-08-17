@@ -58,10 +58,10 @@ const Contact = () => {
     <section
       ref={sectionRef}
       id="contact"
-      className="relative flex flex-col justify-between min-h-screen bg-black overflow-hidden"
+      className="relative flex flex-col justify-between min-h-screen bg-black overflow-hidden section-performance"
     >
       {/* Space-themed Background Elements */}
-      <Particles className="absolute inset-0 -z-50" quantity={150} ease={60} color="#ffffff" refresh />
+  <Particles className="absolute inset-0 -z-50" quantity={90} ease={60} color="#ffffff" refresh />
       
       <div className="absolute inset-0 -z-40">
         <div className="absolute top-20 left-20 w-96 h-96 bg-gradient-to-r from-blue-500/8 to-purple-500/8 rounded-full blur-3xl"></div>

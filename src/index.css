@@ -68,6 +68,20 @@ body {
   @apply min-h-screen mt-20 md:mt-30;
 }
 
+/* Performance: avoid layout/paint for offscreen sections */
+.section-performance {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 1000px;
+}
+
+/* Performance: give the browser hints for animations */
+.will-change-transform {
+  will-change: transform;
+}
+.will-change-opacity {
+  will-change: opacity;
+}
+
 .text-heading {
   @apply font-bold text-3xl md:text-4xl;
 }
