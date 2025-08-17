@@ -87,13 +87,12 @@ const Education = () => {
     gsap.from(".stats-box", {
       y: 50,
       opacity: 0,
-      delay: 1.2,
-      duration: 1,
-      stagger: 0.2,
+      duration: 0.7,
+      stagger: 0.15,
       ease: "back.out(1.2)",
       scrollTrigger: {
         trigger: ".stats-section",
-        start: "top 85%",
+        start: "top 90%",
         toggleActions: "play none none reverse"
       },
     });

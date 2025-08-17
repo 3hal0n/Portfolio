@@ -2,6 +2,7 @@ import { Icon } from "@iconify/react";
 import AnimatedHeaderSection from "../components/AnimatedHeaderSection";
 import { myProjects } from "../constants";
 import { useRef, useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -17,6 +18,25 @@ const Projects = () => {
   const [currentIndex, setCurrentIndex] = useState(null);
   const [selectedProject, setSelectedProject] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [previewPos, setPreviewPos] = useState({ x: 0, y: 0 });
+  const [isDesktop, setIsDesktop] = useState(typeof window !== 'undefined' ? window.innerWidth >= 768 : true);
+
+  useEffect(() => {
+    const handleResize = () => setIsDesktop(window.innerWidth >= 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Attach mousemove to window for desktop preview
+  useEffect(() => {
+    if (!isDesktop) return;
+    // Only update preview position when a project is hovered
+    const move = (e) => {
+      if (currentIndex !== null) handleMouseMove(e);
+    };
+    window.addEventListener('mousemove', move);
+    return () => window.removeEventListener('mousemove', move);
+  }, [isDesktop, currentIndex]);
   
   const text = `Selected projects from across the galaxy,
     meticulously crafted with stellar precision to
@@ -85,9 +105,9 @@ const Projects = () => {
   }, [isLoaded]);
 
   const handleMouseEnter = (index) => {
-    if (window.innerWidth < 768) return;
     setCurrentIndex(index);
 
+    if (window.innerWidth < 768) return;
     const el = overlayRefs.current[index];
     if (!el) return;
 
@@ -115,9 +135,9 @@ const Projects = () => {
   };
 
   const handleMouseLeave = (index) => {
-    if (window.innerWidth < 768) return;
     setCurrentIndex(null);
 
+    if (window.innerWidth < 768) return;
     const el = overlayRefs.current[index];
     if (!el) return;
 
@@ -139,11 +159,27 @@ const Projects = () => {
   };
 
   const handleMouseMove = (e) => {
-    if (window.innerWidth < 768 || !moveX.current || !moveY.current) return;
-    mouse.current.x = e.clientX + 32;
-    mouse.current.y = e.clientY - 150;
-    moveX.current(mouse.current.x);
-    moveY.current(mouse.current.y);
+    if (!isDesktop) return;
+    if (currentIndex === null) return;
+    // Clamp preview to viewport
+    const previewWidth = 384; // w-96
+    const previewHeight = 288; // h-72
+    const padding = 16;
+    let x = e.clientX + 32;
+    let y = e.clientY - 80;
+    const maxX = window.innerWidth - previewWidth - padding;
+    const maxY = window.innerHeight - previewHeight - padding;
+    if (x > maxX) x = maxX;
+    if (y > maxY) y = maxY;
+    if (x < padding) x = padding;
+    if (y < padding) y = padding;
+    setPreviewPos({ x, y });
+    if (moveX.current && moveY.current) {
+      mouse.current.x = x;
+      mouse.current.y = y;
+      moveX.current(mouse.current.x);
+      moveY.current(mouse.current.y);
+    }
   };
 
   const handleProjectClick = (project) => {
@@ -185,7 +221,6 @@ const Projects = () => {
         
         <div
           className="projects-container relative flex flex-col font-light mt-12"
-          onMouseMove={handleMouseMove}
         >
           {myProjects.map((project, index) => (
             <div
@@ -260,38 +295,49 @@ const Projects = () => {
             </div>
           ))}
           
-          {/* Enhanced desktop floating preview */}
-          <div
-            ref={previewRef}
-            className="fixed top-0 left-0 z-50 overflow-hidden pointer-events-none w-96 h-72 md:block hidden rounded-xl shadow-2xl"
-          >
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-purple-600/20 backdrop-blur-md border border-white/20 rounded-xl"></div>
-            {currentIndex !== null && myProjects[currentIndex] && (
-              <>
-                <img
-                  src={myProjects[currentIndex].image}
-                  alt="preview"
-                  className="relative z-10 object-cover w-full h-full rounded-xl"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent rounded-xl"></div>
-                <div className="absolute bottom-4 left-4 right-4 z-20">
-                  <h4 className="text-white font-bold text-lg mb-1">
-                    {myProjects[currentIndex].title}
-                  </h4>
-                  <p className="text-gray-300 text-sm line-clamp-2">
-                    {myProjects[currentIndex].description}
-                  </p>
-                </div>
-              </>
-            )}
-          </div>
+          {/* Enhanced desktop floating preview via portal to avoid clipping */}
+      {/* Project preview portal rendered outside section for desktop only */}
+      {isDesktop && createPortal(
+        <div
+          ref={previewRef}
+          className="fixed z-[999] overflow-hidden w-96 h-72 rounded-xl shadow-2xl will-change-transform will-change-opacity"
+          style={{
+            transform: `translate3d(${previewPos.x}px, ${previewPos.y}px, 0)`,
+            opacity: currentIndex !== null && myProjects[currentIndex] ? 1 : 0,
+            scale: currentIndex !== null && myProjects[currentIndex] ? 1 : 0.9,
+            transition: 'opacity 0.2s, scale 0.2s'
+          }}
+        >
+          {currentIndex !== null && myProjects[currentIndex] && (
+            <>
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-purple-600/20 backdrop-blur-md border border-white/20 rounded-xl"></div>
+              <img
+                src={myProjects[currentIndex].image}
+                alt="preview"
+                className="relative z-10 object-cover w-full h-full rounded-xl"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent rounded-xl"></div>
+              <div className="absolute bottom-4 left-4 right-4 z-20">
+                <h4 className="text-white font-bold text-lg mb-1">
+                  {myProjects[currentIndex].title}
+                </h4>
+                <p className="text-gray-300 text-sm line-clamp-2">
+                  {myProjects[currentIndex].description}
+                </p>
+              </div>
+            </>
+          )}
+        </div>,
+        document.body
+      )}
         </div>
       </div>
 
       {/* Enhanced Project Detail Modal */}
       {selectedProject && (
         <div 
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-lg p-4"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-lg p-1 sm:p-4"
           onClick={(e) => {
             if (e.target === e.currentTarget) {
               setSelectedProject(null);
@@ -305,52 +351,52 @@ const Projects = () => {
             {/* Close button */}
             <button
               onClick={() => setSelectedProject(null)}
-              className="absolute top-6 right-6 z-30 text-white/70 hover:text-white transition-all duration-300 bg-black/50 hover:bg-black/70 rounded-full p-3 backdrop-blur-sm border border-white/10"
+              className="absolute top-2 right-2 sm:top-6 sm:right-6 z-30 text-white/70 hover:text-white transition-all duration-300 bg-black/50 hover:bg-black/70 rounded-full p-2 sm:p-3 backdrop-blur-sm border border-white/10"
             >
-              <Icon icon="lucide:x" className="w-6 h-6" />
+              <Icon icon="lucide:x" className="w-5 h-5 sm:w-6 sm:h-6" />
             </button>
 
-            <div className="relative z-20 overflow-y-auto max-h-[95vh] p-8">
+            <div className="relative z-20 overflow-y-auto max-h-[95vh] p-2 sm:p-8">
               {/* Project Image */}
-              <div className="mb-8 overflow-hidden rounded-xl">
+              <div className="mb-4 sm:mb-8 overflow-hidden rounded-xl">
                 <img
                   src={selectedProject.image}
                   alt={selectedProject.title}
-                  className="w-full h-72 md:h-96 object-cover"
+                  className="w-full h-48 sm:h-72 md:h-96 object-cover"
                 />
               </div>
 
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-8">
                 {/* Main Content */}
                 <div className="lg:col-span-2">
                   {/* Project Title */}
-                  <h3 className="text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">
+                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 sm:mb-6 leading-tight">
                     {selectedProject.title}
                   </h3>
 
                   {/* Description */}
-                  <div className="mb-8">
-                    <h4 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                  <div className="mb-4 sm:mb-8">
+                    <h4 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-4 flex items-center gap-2">
                       <Icon icon="lucide:info" className="w-5 h-5 text-blue-400" />
                       Overview
                     </h4>
-                    <p className="text-gray-300 leading-relaxed text-lg">
+                    <p className="text-gray-300 leading-relaxed text-base sm:text-lg">
                       {selectedProject.description}
                     </p>
                   </div>
 
                   {/* Features */}
                   {selectedProject.subDescription && selectedProject.subDescription.length > 0 && (
-                    <div className="mb-8">
-                      <h4 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                    <div className="mb-4 sm:mb-8">
+                      <h4 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-4 flex items-center gap-2">
                         <Icon icon="lucide:star" className="w-5 h-5 text-purple-400" />
                         Key Features
                       </h4>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 max-h-80 overflow-y-auto pr-2">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-3 max-h-48 sm:max-h-80 overflow-y-auto pr-1 sm:pr-2">
                         {selectedProject.subDescription.map((feature, index) => (
-                          <div key={index} className="flex items-start gap-3 p-3 rounded-lg bg-white/5 border border-white/10 hover:border-white/20 transition-colors duration-300">
+                          <div key={index} className="flex items-start gap-2 sm:gap-3 p-2 sm:p-3 rounded-lg bg-white/5 border border-white/10 hover:border-white/20 transition-colors duration-300">
                             <Icon icon="lucide:check-circle" className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
-                            <span className="text-gray-300 text-sm leading-relaxed">{feature}</span>
+                            <span className="text-gray-300 text-xs sm:text-sm leading-relaxed">{feature}</span>
                           </div>
                         ))}
                       </div>
@@ -361,16 +407,16 @@ const Projects = () => {
                 {/* Sidebar */}
                 <div className="lg:col-span-1">
                   {/* Technologies */}
-                  <div className="mb-8">
-                    <h4 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                  <div className="mb-4 sm:mb-8">
+                    <h4 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-4 flex items-center gap-2">
                       <Icon icon="lucide:code" className="w-5 h-5 text-cyan-400" />
                       Technologies
                     </h4>
-                    <div className="flex gap-2 flex-wrap">
+                    <div className="flex gap-1 sm:gap-2 flex-wrap">
                       {selectedProject.tags?.map(tag => (
                         <span 
                           key={tag.id} 
-                          className="bg-gradient-to-r from-blue-600/20 to-purple-600/20 text-blue-300 px-4 py-2 rounded-full text-sm border border-blue-500/30 backdrop-blur-sm hover:border-blue-400/50 transition-colors duration-300"
+                          className="bg-gradient-to-r from-blue-600/20 to-purple-600/20 text-blue-300 px-2 sm:px-4 py-1 sm:py-2 rounded-full text-xs sm:text-sm border border-blue-500/30 backdrop-blur-sm hover:border-blue-400/50 transition-colors duration-300"
                         >
                           {tag.name}
                         </span>
@@ -379,11 +425,11 @@ const Projects = () => {
                   </div>
 
                   {/* Action Buttons */}
-                  <div className="flex flex-col gap-4">
+                  <div className="flex flex-col gap-2 sm:gap-4">
                     {selectedProject.href && (
                       <button 
                         onClick={() => window.open(selectedProject.href, '_blank')}
-                        className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-4 rounded-xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-3 font-semibold shadow-lg"
+                        className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-4 sm:px-6 py-2 sm:py-4 rounded-xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2 sm:gap-3 font-semibold shadow-lg text-sm sm:text-base"
                       >
                         <Icon icon="lucide:github" className="w-5 h-5" />
                         View on GitHub
@@ -391,7 +437,7 @@ const Projects = () => {
                     )}
                     <button 
                       onClick={() => setSelectedProject(null)}
-                      className="border border-purple-500/30 text-purple-300 hover:bg-purple-600/10 hover:border-purple-400/50 px-6 py-4 rounded-xl transition-all duration-300 font-semibold"
+                      className="border border-purple-500/30 text-purple-300 hover:bg-purple-600/10 hover:border-purple-400/50 px-4 sm:px-6 py-2 sm:py-4 rounded-xl transition-all duration-300 font-semibold text-sm sm:text-base"
                     >
                       Close Project
                     </button>
