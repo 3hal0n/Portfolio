@@ -39,7 +39,7 @@ function hexToRgb(hex) {
   return [red, green, blue];
 }
 
-export const Particles = ({
+const ParticlesComponent = ({
   className = "",
   quantity = 100,
   staticity = 50,
@@ -257,6 +257,7 @@ export const Particles = ({
     rafID.current = window.requestAnimationFrame(animate);
   };
 
+
   return (
     <div
       className={twMerge("pointer-events-none", className)}
@@ -268,3 +269,5 @@ export const Particles = ({
     </div>
   );
 };
+
+export const Particles = React.memo(ParticlesComponent);

@@ -49,7 +49,7 @@ const About = () => {
   }, []);
 
   return (
-    <section className="relative w-full min-h-screen bg-primary overflow-hidden section-spacing" id="about">
+  <section className="relative w-full min-h-screen bg-primary overflow-hidden section-spacing section-performance" id="about">
       {/* Space-themed Background Elements */}
       <div className="absolute inset-0 -z-50">
         {/* Gradient Orbs */}
@@ -58,7 +58,7 @@ const About = () => {
         <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-gradient-to-r from-cyan-500/6 to-blue-500/6 rounded-full blur-3xl"></div>
       </div>
 
-      {/* Header Section - Using AnimatedHeaderSection like Education */}
+      {/* Header Section */}
       <AnimatedHeaderSection
         subTitle={"Exploring the Universe of Code"}
         title={"About Me"}

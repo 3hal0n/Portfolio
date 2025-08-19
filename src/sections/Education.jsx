@@ -87,13 +87,12 @@ const Education = () => {
     gsap.from(".stats-box", {
       y: 50,
       opacity: 0,
-      delay: 1.2,
-      duration: 1,
-      stagger: 0.2,
+      duration: 0.7,
+      stagger: 0.15,
       ease: "back.out(1.2)",
       scrollTrigger: {
         trigger: ".stats-section",
-        start: "top 85%",
+        start: "top 90%",
         toggleActions: "play none none reverse"
       },
     });
@@ -102,12 +101,12 @@ const Education = () => {
   return (
     <section
       id="education"
-      className="flex flex-col justify-between min-h-screen bg-primary overflow-hidden relative"
+      className="flex flex-col justify-between min-h-screen bg-primary overflow-hidden relative section-performance"
     >
       {/* Particles Background */}
       <Particles 
         className="absolute inset-0 -z-50" 
-        quantity={150} 
+        quantity={90} 
         ease={60} 
         color="#ffffff" 
         refresh 

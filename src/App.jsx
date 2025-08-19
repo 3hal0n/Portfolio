@@ -1,9 +1,14 @@
-import React, { useEffect, useState, lazy, Suspense } from "react";
+import React, { useEffect, useState, lazy, Suspense, useRef } from "react";
 import Navbar from "./sections/Navbar";
 import Hero from "./sections/Hero";
 import { ReactLenis } from 'lenis/react';
 
 import { useProgress } from "@react-three/drei";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+// Register ScrollTrigger once
+gsap.registerPlugin(ScrollTrigger);
 
 // Lazy load components for better performance
 const About = lazy(() => import("./sections/About"));
@@ -16,12 +21,54 @@ const Footer = lazy(() => import("./sections/Footer"));
 const App = () => {
   const { progress } = useProgress();
   const [isReady, setIsReady] = useState(false);
+  const lenisRef = useRef(null);
 
   useEffect(() => {
     if (progress === 100) {
       setIsReady(true);
     }
   }, [progress]);
+
+  // Lenis + ScrollTrigger sync to reduce jank and fast-scroll issues
+  useEffect(() => {
+    // Use GSAP ticker to drive Lenis, ensuring consistent timing
+    const lenis = lenisRef.current?.lenis;
+    if (!lenis) return;
+
+    const update = (time) => {
+      // GSAP provides time in seconds; Lenis expects milliseconds
+      lenis.raf(time * 1000);
+    };
+
+    gsap.ticker.add(update);
+    // Let ScrollTrigger use fixed update cadence with Lenis
+    ScrollTrigger.scrollerProxy(document.body, {
+      scrollTop(value) {
+        if (arguments.length && typeof value === 'number') {
+          lenis.scrollTo(value, { immediate: true });
+        }
+        return lenis.scroll;
+      },
+      getBoundingClientRect() {
+        return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight };
+      },
+      // pinType helps on mobile where transform vs fixed can differ
+      pinType: document.body.style.transform ? "transform" : "fixed",
+    });
+
+    const onLenisScroll = () => ScrollTrigger.update();
+    lenis.on('scroll', onLenisScroll);
+
+    // Refresh after images/3D ready
+    const refresh = () => ScrollTrigger.refresh();
+    window.addEventListener('load', refresh);
+
+    return () => {
+      window.removeEventListener('load', refresh);
+      lenis.off('scroll', onLenisScroll);
+      gsap.ticker.remove(update);
+    };
+  }, [isReady]);
 
   // Component loading fallback
   const ComponentLoader = () => (
@@ -31,26 +78,18 @@ const App = () => {
   );
 
   return (
-    <ReactLenis root className="relative w-screen min-h-screen overflow-x-hidden">
+    <ReactLenis ref={lenisRef} root className="relative w-screen min-h-screen overflow-x-hidden">
+      {/* Small top progress bar while assets load (non-blocking) */}
       {!isReady && (
-        <div className="fixed inset-0 z-[999] flex flex-col items-center justify-center bg-black text-white transition-opacity duration-700 font-light">
-          <p className="mb-4 text-xl tracking-widest animate-pulse">
-            Loading {Math.floor(progress)}%
-          </p>
-          <div className="relative h-1 overflow-hidden rounded w-60 bg-white/20">
-            <div
-              className="absolute top-0 left-0 h-full transition-all duration-300 bg-white"
-              style={{ width: `${progress}%` }}
-            ></div>
-          </div>
+        <div className="fixed top-0 left-0 right-0 z-[999] h-1 bg-white/10">
+          <div
+            className="h-full bg-white transition-[width] duration-300"
+            style={{ width: `${progress}%` }}
+          />
         </div>
       )}
-      
-      <div
-        className={`${
-          isReady ? "opacity-100" : "opacity-0"
-        } transition-opacity duration-1000`}
-      >
+
+      <div>
         <Navbar />
         <main className="relative">
           <Hero />

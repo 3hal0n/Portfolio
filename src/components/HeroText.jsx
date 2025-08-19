@@ -26,10 +26,11 @@ const HeroText = () => {
       <div className="w-full border-t border-neutral-300 dark:border-neutral-700 mb-4 md:mb-8 ml-1 md:ml-4" />
       {/* Description */}
       <motion.p
-        className="text-xs md:text-base uppercase text-neutral-700 dark:text-neutral-300 text-right max-w-xl self-end mr-2 md:mr-8"
+        className="text-xs md:text-base uppercase text-neutral-700 dark:text-neutral-300 max-w-xl ml-1 md:ml-4"
         initial={{ opacity: 0, x: 30 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 1.3 }}
+        style={{ containIntrinsicSize: '1px 80px' }}
       >
         Engineering smart, impactful digital solutions that fuel business growth and user engagement.
       </motion.p>
