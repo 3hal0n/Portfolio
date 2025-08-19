@@ -7,7 +7,7 @@ import { useGLTF } from "@react-three/drei";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
-export function Planet(props) {
+const PlanetComponent = (props) => {
   const shapeContainer = useRef(null);
   const shperesContainer = useRef(null);
   const ringContainer = useRef(null);
@@ -44,6 +44,7 @@ export function Planet(props) {
     );
   }, []);
 
+
   return (
     <group ref={shapeContainer} {...props} dispose={null}>
       <group ref={shperesContainer}>
@@ -75,6 +76,8 @@ export function Planet(props) {
       />
     </group>
   );
-}
+};
+
+export const Planet = React.memo(PlanetComponent);
 
 useGLTF.preload("/models/Planet.glb");

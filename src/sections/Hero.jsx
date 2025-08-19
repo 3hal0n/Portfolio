@@ -10,13 +10,14 @@ const Hero = () => {
   const isMobile = useMediaQuery({ maxWidth: 853 });
 
   return (
-  <section id="home" className="flex items-start justify-center min-h-screen overflow-hidden md:items-start md:justify-start c-space section-performance">
+    <section id="home" className="flex items-start justify-center min-h-screen overflow-hidden md:items-start md:justify-start c-space section-performance">
       <Particles
         className="absolute inset-0 -z-50"
-    quantity={80}
+        quantity={80}
         ease={80}
         color={"#ffffff"}
         refresh
+        style={{ background: "transparent" }}
       />
       <HeroText />
       <figure
@@ -26,16 +27,14 @@ const Hero = () => {
         <Canvas
           // Performance-friendly WebGL settings for smoother scroll
           dpr={[1, 1.5]}
-          gl={{ antialias: false, powerPreference: "high-performance", stencil: false, depth: true }}
+          gl={{ antialias: false, powerPreference: "high-performance", stencil: false, depth: true, alpha: true }}
           camera={{ position: [0, 0, -10], fov: 17.5, near: 1, far: 20 }}
+          style={{ background: "transparent" }}
         >
           <ambientLight intensity={0.5} />
-          
           <Float speed={0.5} position={isMobile ? [0, -0.6, 0] : [-0.8, 0, 0]}>
             <Planet scale={isMobile ? 0.6 : 0.95} />
           </Float>
-          
-        
           <Environment resolution={128}>
             <group rotation={[-Math.PI / 3, 4, 1]}>
               <Lightformer
