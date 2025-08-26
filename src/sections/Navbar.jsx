@@ -117,8 +117,14 @@ const Navbar = () => {
               document.getElementById("home")?.scrollIntoView({ behavior: "smooth" });
               closeMenu();
             }}
-            className="text-xl font-bold transition-colors text-neutral-400 hover:text-white"
+            className="flex items-center gap-2 text-xl font-bold transition-colors text-neutral-400 hover:text-white"
           >
+            <img
+              src="/logo.png"
+              alt="Logo"
+              className="w-10 h-10 object-contain drop-shadow"
+              style={{ marginRight: 4 }}
+            />
             Shalon
           </a>
           <button
