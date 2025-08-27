@@ -29,7 +29,7 @@ const Contact = () => {
 
   useGSAP(() => {
     // Animate contact cards with staggered entrance (optimized)
-    gsap.from(".contact-card", {
+    const contactAnim = gsap.from(".contact-card", {
       y: 60,
       opacity: 0,
       delay: 0.1,
@@ -42,6 +42,15 @@ const Contact = () => {
         toggleActions: "play none none reverse"
       },
     });
+
+    return () => {
+      if (contactAnim) contactAnim.kill();
+      if (window.ScrollTrigger && window.ScrollTrigger.getAll) {
+        window.ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      } else if (typeof ScrollTrigger !== 'undefined' && ScrollTrigger.getAll) {
+        ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      }
+    };
   }, []);
 
   const handleCopyEmail = async () => {
