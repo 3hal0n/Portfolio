@@ -34,7 +34,7 @@ This project showcases my skills, projects, and experience as a full-stack softw
 - **3D Animations:** Interactive 3D models and backgrounds
 - **Contact Form:** EmailJS-powered contact form for direct communication
 - **Responsive Design:** Mobile-first, works on all devices
-- **Downloadable Resume:** (Coming soon!)
+- **Downloadable Resume:** 
 
 ---
 
