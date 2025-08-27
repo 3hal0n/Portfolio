@@ -1,15 +1,27 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "motion/react";
 
 function Navigation() {
   const [activeSection, setActiveSection] = useState("home");
 
   useEffect(() => {
-    const handleScroll = () => {
-      // Add 'education' to the sections array
-      const sections = ["home", "about", "education", "work", "contact"];
-      const scrollPosition = window.scrollY + 100; // Offset for better detection
+    // Throttle function
+    const throttle = (func, limit) => {
+      let inThrottle;
+      return function () {
+        const args = arguments;
+        const context = this;
+        if (!inThrottle) {
+          func.apply(context, args);
+          inThrottle = true;
+          setTimeout(() => (inThrottle = false), limit);
+        }
+      };
+    };
 
+    const handleScroll = () => {
+      const sections = ["home", "about", "education", "work", "contact"];
+      const scrollPosition = window.scrollY + 100;
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
@@ -22,8 +34,9 @@ function Navigation() {
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const throttledScroll = throttle(handleScroll, 100);
+    window.addEventListener("scroll", throttledScroll);
+    return () => window.removeEventListener("scroll", throttledScroll);
   }, []);
 
   const scrollToSection = (sectionId) => {

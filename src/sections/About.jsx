@@ -14,11 +14,8 @@ const About = () => {
   const grid2Container = useRef();
 
   useGSAP(() => {
-    // Remove the .about-heading target since it no longer exists
-    // AnimatedHeaderSection handles its own animations
-
     // Animate grid items with staggered entrance
-    gsap.from(".grid-item", {
+    const gridItemAnim = gsap.from(".grid-item", {
       y: 80,
       opacity: 0,
       delay: 0.3,
@@ -33,7 +30,7 @@ const About = () => {
     });
 
     // Animate grid content with different delays
-    gsap.from(".grid-content", {
+    const gridContentAnim = gsap.from(".grid-content", {
       x: -30,
       opacity: 0,
       delay: 0.6,
@@ -46,6 +43,13 @@ const About = () => {
         toggleActions: "play none none reverse"
       },
     });
+
+    return () => {
+      // Kill all ScrollTriggers and animations for this section
+      if (gridItemAnim) gridItemAnim.kill();
+      if (gridContentAnim) gridContentAnim.kill();
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
   }, []);
 
   return (

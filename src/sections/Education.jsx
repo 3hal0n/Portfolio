@@ -20,7 +20,7 @@ const Education = () => {
 
   useGSAP(() => {
     // Animate education cards with enhanced timing
-    gsap.from(".education-card", {
+    const educationAnim = gsap.from(".education-card", {
       y: 80,
       opacity: 0,
       delay: 0.3,
@@ -35,7 +35,7 @@ const Education = () => {
     });
 
     // Animate institution logos with smooth entrance
-    gsap.from(".institution-logo", {
+    const logoAnim = gsap.from(".institution-logo", {
       scale: 0.5,
       rotation: 180,
       opacity: 0,
@@ -51,7 +51,7 @@ const Education = () => {
     });
 
     // Animate timeline line
-    gsap.fromTo(".timeline-line", 
+    const timelineAnim = gsap.fromTo(".timeline-line", 
       {
         scaleY: 0,
         transformOrigin: "top center"
@@ -69,7 +69,7 @@ const Education = () => {
     );
 
     // Animate achievement tags
-    gsap.from(".achievement-tag", {
+    const achievementAnim = gsap.from(".achievement-tag", {
       x: -20,
       opacity: 0,
       delay: 1,
@@ -84,7 +84,7 @@ const Education = () => {
     });
 
     // Animate stats boxes
-    gsap.from(".stats-box", {
+    const statsAnim = gsap.from(".stats-box", {
       y: 50,
       opacity: 0,
       duration: 0.7,
@@ -96,6 +96,15 @@ const Education = () => {
         toggleActions: "play none none reverse"
       },
     });
+
+    return () => {
+      [educationAnim, logoAnim, timelineAnim, achievementAnim, statsAnim].forEach(anim => anim && anim.kill());
+      if (window.ScrollTrigger && window.ScrollTrigger.getAll) {
+        window.ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      } else if (typeof ScrollTrigger !== 'undefined' && ScrollTrigger.getAll) {
+        ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      }
+    };
   }, []);
 
   return (

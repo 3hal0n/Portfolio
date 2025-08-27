@@ -61,8 +61,9 @@ const Projects = () => {
 
     // Animate projects entrance only if project refs exist
     const validProjectRefs = projectRefs.current.filter(Boolean);
+    let projectsAnim;
     if (validProjectRefs.length > 0) {
-      gsap.fromTo(validProjectRefs, 
+      projectsAnim = gsap.fromTo(validProjectRefs, 
         {
           y: 50,
           opacity: 0
@@ -82,6 +83,11 @@ const Projects = () => {
         }
       );
     }
+
+    return () => {
+      if (projectsAnim) projectsAnim.kill();
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
   }, [isLoaded]);
 
   const handleMouseEnter = (index) => {
