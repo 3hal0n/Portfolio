@@ -1,6 +1,3 @@
-bash
-git clone https://github.com/yourusername/portfolio.git
-
 # 🚀 Shalon Fernando's Developer Portfolio
 
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-Portfolio-blue?logo=vercel)](https://shalon.vercel.app/)
@@ -60,7 +57,7 @@ npm run dev
 
 ## 📦 Deployment
 
-This portfolio is automatically deployed on [Vercel](https://vercel.com/).
+Deployed on Vercel [shalon.vercel.app](https://shalon.vercel.app/)
 
 ---
 
