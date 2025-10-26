@@ -1,4 +1,7 @@
 # 🚀 Shalon Fernando's Developer Portfolio
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/3hal0n/Portfolio?color=brightgreen&label=release)
+
+
 
 [![Vercel Deploy](https://img.shields.io/badge/deployed%20on-vercel-000?logo=vercel&logoColor=white)](https://your-vercel-url.vercel.app/)
 [![React](https://img.shields.io/badge/React-20232A?logo=react&logoColor=61DAFB)](https://reactjs.org/)

@@ -8,6 +8,16 @@ const Footer = () => {
         <p>|</p>
         <p>Privacy Policy</p>
       </div>
+      <div className="flex items-center gap-4">
+        <a
+          href="https://github.com/3hal0n/Portfolio"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-neutral-300 hover:text-white transition-colors duration-200"
+        >
+          🔗 View Source on GitHub
+        </a>
+      </div>
       <div className="flex gap-3">
         {mySocials.map((social, index) => (
           <a href={social.href} key={index}>
