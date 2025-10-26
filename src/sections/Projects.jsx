@@ -395,6 +395,15 @@ const Projects = () => {
                         View on GitHub
                       </button>
                     )}
+                    {selectedProject.deploy && (
+                      <button
+                        onClick={() => window.open(selectedProject.deploy, '_blank')}
+                        className="bg-gradient-to-r from-green-600 to-emerald-500 hover:from-green-700 hover:to-emerald-600 text-white px-6 py-4 rounded-xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-3 font-semibold shadow-lg"
+                      >
+                        <Icon icon="lucide:external-link" className="w-5 h-5" />
+                        Live Demo
+                      </button>
+                    )}
                     <button 
                       onClick={() => setSelectedProject(null)}
                       className="border border-purple-500/30 text-purple-300 hover:bg-purple-600/10 hover:border-purple-400/50 px-6 py-4 rounded-xl transition-all duration-300 font-semibold"

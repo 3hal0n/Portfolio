@@ -1,4 +1,7 @@
 # 🚀 Shalon Fernando's Developer Portfolio
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/3hal0n/Portfolio?color=brightgreen&label=release)
+
+
 
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-Portfolio-blue?logo=vercel)](https://shalon.vercel.app/)
 [![React](https://img.shields.io/badge/React-20232A?logo=react&logoColor=61DAFB)](https://reactjs.org/)
@@ -68,6 +71,8 @@ Deployed on Vercel [shalon.vercel.app](https://shalon.vercel.app/)
 - **All assets are optimized for performance and fast loading.**
 
 ---
+
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/3hal0n/Portfolio?color=brightgreen&label=release)
 
 ---
 
