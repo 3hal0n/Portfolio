@@ -61,6 +61,8 @@ npm run dev
 
 This portfolio is automatically deployed on [Vercel](https://vercel.com/).
 
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/3hal0n/Portfolio?color=brightgreen&label=release)
+
 ---
 
 ## 📄 License
