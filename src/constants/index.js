@@ -1,6 +1,7 @@
 export const myProjects = [
+  
   {
-  id: 1,
+  id: 2,
   title: "🎮Avyra Game Download Platform",
   description:
     "Avyra is a fullstack game download web application inspired by platforms like Steam. Built with React and Spring Boot, Avyra offers a complete gaming storefront experience — from browsing games to secure downloads after purchase. With a modern glassmorphic UI, 3D animations, AI assistant, and PayPal integration, it delivers a seamless and engaging experience for gamers.",
@@ -57,7 +58,7 @@ export const myProjects = [
   ],
 },
   {
-    id: 2,
+    id: 3,
     title: "🏥 Arogya Patient Management System",
     description:
       "Arogya is a modern, web-based Patient Management System designed to streamline healthcare workflows for clinics, hospitals, and independent medical practitioners. With a strong focus on usability, automation, and visual engagement, Arogya simplifies managing patient records, appointments, and notifications — empowering healthcare providers to deliver efficient, timely care.",
@@ -104,7 +105,34 @@ export const myProjects = [
     ],
   },
   {
-    id: 3,
+    id: 6,
+    title: "🏥 MediWay Hospital Management System",
+    description:
+      "MediWay is a full-stack hospital management platform that streamlines healthcare operations through appointment scheduling, patient record management, and secure online payments. It bridges patients, doctors, and administrators while prioritizing reliability, scalability, and security with modern enterprise technologies.",
+    subDescription: [
+      "📅 Appointment Scheduling: Real-time doctor availability with concurrency control to prevent double bookings.",
+      "🩺 Patient Records: Secure CRUD operations with QR-code-based digital health cards.",
+      "💳 Payment System: PayPal Sandbox integration for secure payments and automated PDF+QR receipt generation.",
+      "📊 Admin Dashboard: Interactive analytics with PDF/CSV export for revenue and performance tracking.",
+      "🔐 Role-Based Access: Admin, Doctor, and Patient roles using JWT authentication and Spring Security.",
+      "📦 DevOps & Testing: Docker, Docker Compose, CI/CD, and extensive unit & integration tests with JaCoCo coverage reports."
+    ],
+    href: "https://github.com/Y3S1-WE20/MediWay",
+    logo: "/assets/logos/sliit-logo.png",
+    image: "/assets/projects/mediway.png",
+    tags: [
+      { id: 1, name: "Spring Boot", path: "/assets/logos/springboot.svg" },
+      { id: 2, name: "React", path: "/assets/logos/react.svg" },
+      { id: 3, name: "MySQL", path: "/assets/logos/mysql.svg" },
+      { id: 4, name: "Docker", path: "/assets/logos/docker.svg" },
+      { id: 5, name: "PayPal", path: "/assets/logos/paypal.svg" },
+      { id: 6, name: "JUnit 5", path: "/assets/logos/junit.svg" },
+      { id: 7, name: "Mockito", path: "/assets/logos/mockito.svg" },
+      { id: 8, name: "Spring Security", path: "/assets/logos/springboot.svg" }
+    ],
+  },
+  {
+    id: 4,
     title: "🧰 Item Inventory & Maintenance Management System",
     description:
       "A full-stack web application for efficient inventory tracking, usage logging, and maintenance management. Built for modern organizations, it streamlines asset handling with real-time alerts, interactive 3D models, and exportable reports — all within a secure, role-based environment.",
@@ -151,7 +179,7 @@ export const myProjects = [
       },
     ],
   },{
-  id: 4,
+  id: 5,
   title: "📄 PDF Chat AI",
   description:
     "PDF Chat AI is an intelligent document assistant that allows users to upload and interact with PDF files using natural language. Built with Streamlit and Hugging Face models, it leverages retrieval-augmented generation (RAG) to enable fast, context-aware question answering over document content.",
@@ -198,33 +226,33 @@ export const myProjects = [
 },
 
   {
-    id: 5,
-    title: "💰Cashly - Personal Finance Management App ",
-    description:
-      "Cashly is a modern, user-friendly Android application designed to help users manage their personal finances effectively. Built with Kotlin and following Material Design principles, Cashly provides an intuitive interface for tracking expenses, managing budgets, and analyzing spending patterns.",
-    subDescription: [
-      "📱 User Experience: Secure Authentication with PIN-based security and encrypted storage, Dark Mode Support, Multi-Currency Support (USD, EUR, GBP, LKR), Responsive Design optimized for various Android device sizes, Custom Montserrat font family.",
-      "💰 Financial Management: Transaction Tracking for recording and categorizing income and expenses, Budget Management for setting and monitoring spending limits, Export Functionality for downloading transaction history in CSV and PDF formats, Search Transactions for quickly finding specific transactions.",
-      "📊 Analytics & Insights: Visual Analytics with interactive charts and graphs for spending patterns, Category-wise Analysis for breakdown of expenses by category, Income vs Expense Tracking with clear visualization of financial flow, Budget Progress with real-time monitoring of budget utilization.",
-      "🔒 Security Features: Encrypted Storage for secure storage of sensitive financial data, PIN Protection with customizable PIN for app access, Secure Preferences with encrypted SharedPreferences for sensitive data.",
-    ],
-    href: "https://github.com/3hal0n/Cashly",
-    logo: "",
-    image: "/assets/projects/cashly.png",
-    tags: [
-      {
-        id: 1,
-        name: "Kotlin",
-        path: "/assets/logos/kotlin.svg",
-      },
-      {
-        id: 2,
-        name: "java",
-        path: "/assets/logos/java.svg",
-      },
-      
-    ],
-  },
+  id: 1,
+  title: "🚨 National AI-Optimized Disaster Platform for Sri Lanka (ResQ)",
+  description:
+    "ResQ is a dual-platform disaster management solution built during Codefest 2025 (1st Runner-Up) to address Sri Lanka's disaster response challenges. It includes a React Native mobile app for citizens and a React-based web dashboard for government authorities. The platform enables real-time SOS alerts, incident reporting, AI-powered safety guidance, and optimized resource allocation using WebSocket-powered live updates.",
+  subDescription: [
+    "📱 Mobile App (Citizens): SOS alerts with GPS location, incident reporting with photo uploads, AI Safety Assistant, risk maps with real-time weather and disaster zones, and offline-first design.",
+    "💻 Web Dashboard (Government): Role-based access, live SOS signal monitoring, analytics dashboard, reports heatmap, AI-powered resource allocation, and disaster creation with severity tracking.",
+    "🔐 SLUDI Authentication: Secure OAuth2-based login for both citizens and government officials.",
+    "⚡ Real-Time Features: WebSocket connections for instant alerts, live monitoring, and data synchronization.",
+    "🛠️ Technology Stack: React Native (mobile), React (web), Express.js backend, MongoDB Atlas (geospatial indexing), Google Maps API, Dialogflow/Rasa AI chatbot.",
+    "🏆 Recognition: Codefest 2025 Hackathon – 1st Runner-Up.",
+  ],
+  href: "https://github.com/disaster-response-sl/national-disaster-platform",
+  logo: "",
+  image: "/assets/projects/resq.png",
+  tags: [
+    { id: 1, name: "React Native", path: "/assets/logos/reactnative.svg" },
+    { id: 2, name: "React", path: "/assets/logos/react.svg" },
+    { id: 3, name: "Express.js", path: "/assets/logos/javascript.svg" },
+    { id: 4, name: "MongoDB Atlas", path: "/assets/logos/mongodb.svg" },
+    { id: 5, name: "WebSockets", path: "/assets/logos/websockets.svg" },
+    { id: 6, name: "Google Maps API", path: "/assets/logos/googlemaps.svg" },
+    { id: 7, name: "Dialogflow/Rasa", path: "/assets/logos/dialogflow.svg" },
+    { id: 8, name: "OAuth2", path: "/assets/logos/oauth2.svg" },
+  ],
+},
+
 ];
 
 export const mySocials = [
