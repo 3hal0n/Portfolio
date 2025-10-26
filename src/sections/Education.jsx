@@ -285,7 +285,7 @@ const Education = () => {
                 },
                 { 
                   label: "Leadership Skills", 
-                  value: "Team Leader", 
+                  value: "Hackathon 1st Runner-Up Team Leader", 
                   icon: "👑",
                   gradient: "from-purple-500/30 to-pink-500/30",
                   border: "border-purple-400/30",
