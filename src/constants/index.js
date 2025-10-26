@@ -117,7 +117,8 @@ export const myProjects = [
       "🔐 Role-Based Access: Admin, Doctor, and Patient roles using JWT authentication and Spring Security.",
       "📦 DevOps & Testing: Docker, Docker Compose, CI/CD, and extensive unit & integration tests with JaCoCo coverage reports."
     ],
-    href: "https://github.com/Y3S1-WE20/MediWay",
+  href: "https://github.com/Y3S1-WE20/MediWay",
+  deploy: "https://medi-way.vercel.app/",
     logo: "/assets/logos/sliit-logo.png",
     image: "/assets/projects/mediway.png",
     tags: [
