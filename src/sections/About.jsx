@@ -145,8 +145,8 @@ const About = () => {
               
               {/* Enhanced Download Button */}
               <a
-                href="/assets/ShalonFernando_Resume.pdf"
-                download="ShalonFernando_Resume.pdf"
+                href="/assets/ShalonFernandoResume.pdf"
+                download="ShalonFernandoResume.pdf"
                 className="group/btn inline-flex items-center gap-3 px-8 py-4 rounded-full font-semibold text-white text-base md:text-lg bg-gradient-to-r from-blue-600 via-blue-500 to-purple-600 shadow-xl border border-blue-400/30 hover:border-blue-400/60 hover:shadow-2xl hover:shadow-blue-500/20 focus:outline-none focus:ring-4 focus:ring-blue-400/40 active:scale-95 transition-all duration-300 backdrop-blur-sm"
                 aria-label="Download Shalon Fernando's Resume"
               >
