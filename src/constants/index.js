@@ -277,6 +277,32 @@ export const mySocials = [
 
 export const experiences = [
   {
+    title: "Fullstack Software Engineer",
+    company: "Zenvora Technologies",
+    type: "Internship",
+    date: "Oct 2025 - Present",
+    location: "Remote",
+    logo: "/assets/zenvora-logo.png",
+    description: "Working as a Fullstack Software Engineer Intern at Zenvora Technologies, contributing to modern web and enterprise projects with a focus on clarity, purpose, and innovation.",
+    highlights: [
+      "Won multiple hackathons and innovation contests during internship.",
+      "2nd Runner Up - IntelliCon'25 (AIESEC in SLIIT): Recognized for outstanding performance and innovation at Sri Lanka's premier AI & Innovation convention.",
+      "Semi-Finalist - hackX 10.0 (University of Kelaniya): Advanced to finals for exceptional problem-solving and teamwork.",
+      "Winner – SLIIT MiniHackathon 2025: 1st Place for technical robustness and team collaboration.",
+      "1st Runner Up – ReviveNation Contest (SLIIT Codefest 2025): Delivered an inspiring solution in a competitive engineering challenge.",
+      "Finalist - VibeFlow AI Hackathon (STEM Link): Selected as a finalist for creative AI solutions.",
+      "Dean's List Award - SLIIT Year 1 Semester 2: Academic excellence with GPA 3.74."
+    ],
+    certificates: [
+      { name: "IntelliCon'25 Certificate", file: "/assets/certifications/IntelliconCertificate.jpeg" },
+      { name: "hackX 10.0 Semis Certificate", file: "/assets/certifications/HackXSemisCertificate.jpg" },
+      { name: "SLIIT MiniHackathon Winner Certificate", file: "/assets/certifications/minihackathonWinnersCertificate.jpg" },
+      { name: "ReviveNation Contest Certificate", file: "/assets/certifications/revivenation.jpg" },
+      { name: "VibeFlow AI Certificate", file: "/assets/certifications/CertificateVibeFlowAI.jpg" },
+      { name: "Dean's List Award Y1S2", file: "/assets/certifications/RecievingAward.jpg" }
+    ]
+  },
+  {
     title: "Software Engineer",
     job: "Freelance",
     date: "2025",
@@ -284,7 +310,6 @@ export const experiences = [
       "Hire me no experience yet"
     ],
   },
- 
 ];
 export const reviews = [
   {
