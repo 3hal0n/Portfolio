@@ -20,7 +20,15 @@ const HeroText = () => {
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 1 }}
       >
-        SHALON<br className="hidden md:block" /> FERNANDO
+        SHALON<br className="hidden md:block" />FERNANDO <br className="hidden md:block" />
+        <motion.h1
+          className="text-4xl md:text-5xl font-bold leading-none tracking-tight text-left text-black dark:text-white mb-2 md:mb-4 ml-1 md:ml-4"
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 1.2 }}
+        >
+        Software Engineer
+        </motion.h1>
       </motion.h1>
       {/* Horizontal line */}
       <div className="w-full border-t border-neutral-300 dark:border-neutral-700 mb-4 md:mb-8 ml-1 md:ml-4" />
