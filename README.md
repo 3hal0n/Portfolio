@@ -1,4 +1,4 @@
-# 🚀 Shalon Fernando's Developer Portfolio
+#  Shalon Fernando's Developer Portfolio
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/3hal0n/Portfolio?color=brightgreen&label=release)
 
 
@@ -11,7 +11,7 @@
 
 ---
 
-## ✨ Overview
+##  Overview
 
 Welcome to my interactive developer portfolio!  
 This project showcases my skills, projects, and experience as a full-stack software engineer. Built with React, Three.js, and TailwindCSS, it features 3D animations, responsive design, and a modern UI/UX.
@@ -21,7 +21,7 @@ This project showcases my skills, projects, and experience as a full-stack softw
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 - **Frontend:** React, TailwindCSS, Framer Motion
 - **3D & Animation:** Three.js, @react-three/fiber, @react-three/drei, GSAP, Lenis
@@ -29,7 +29,7 @@ This project showcases my skills, projects, and experience as a full-stack softw
 
 ---
 
-## 📸 Features
+## Features
 
 - **Custom Branding:** Astronaut logo as favicon and in the navbar
 - **About Me:** Introduction, core values, and career goals
@@ -42,7 +42,7 @@ This project showcases my skills, projects, and experience as a full-stack softw
 
 ---
 
-## 🚦 Getting Started
+##  Getting Started
 
 ```bash
 # Clone the repo
@@ -58,13 +58,13 @@ npm run dev
 
 ---
 
-## 📦 Deployment
+## Deployment
 
 Deployed on Vercel [shalon.vercel.app](https://shalon.vercel.app/)
 
 ---
 
-## 🖼️ Assets & Customization
+##  Assets & Customization
 
 - **Favicon & Logo:** Located at `public/logo.png` and `public/assets/maris-stella-logo.png`
 - **3D Models:** Only `Planet.glb` is used (in `public/models/`)
@@ -76,7 +76,7 @@ Deployed on Vercel [shalon.vercel.app](https://shalon.vercel.app/)
 
 ---
 
-## 📄 License
+##  License
 
 This project is licensed under the MIT License.
 
